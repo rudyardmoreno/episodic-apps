@@ -67,7 +67,7 @@ public class UserController {
         Episode episode = new Episode();
         RecentlyWatched recentlyWatched;
 
-        for (Viewing viewing : viewingRepository.findAllByUserId(id)) {
+        for (Viewing viewing : viewingRepository.findAllByUserIdOrderByUpdatedAtDesc(id)) {
             episode= episodeRepository.findOne(viewing.getEpisodeId());
             show = showRepository.findOne(viewing.getShowId());
             recentlyWatched = new RecentlyWatched(show,episode,viewing);
