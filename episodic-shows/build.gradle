@@ -45,4 +45,6 @@ dependencies {
 	compile "org.flywaydb:flyway-core:4.2.0"
 	compile 'com.google.code.gson:gson:2.8.0'
 	compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda'
+	compile("org.springframework.boot:spring-boot-starter-amqp")
+	compile("org.springframework.amqp:spring-rabbit-junit:1.7.2.RELEASE")
 }

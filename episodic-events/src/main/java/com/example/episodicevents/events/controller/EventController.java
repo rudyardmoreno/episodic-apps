@@ -28,7 +28,7 @@ public class EventController {
 
         return eventList;
     }
-    
+
     @PostMapping("/")
     public Object createProduct(@RequestBody Event event) {
         return eventRepository.save(event);
