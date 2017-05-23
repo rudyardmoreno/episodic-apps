@@ -25,12 +25,12 @@ public class AmqpPublisher {
 
     @Bean
     public Queue queue() {
-        return new Queue("episodic-progress");
+        return new Queue("#{'${queue}'}");
     }
 
     @Bean
     public Binding declareBinding() {
-        return BindingBuilder.bind(queue()).to(appExchange()).with("episodic-progress");
+        return BindingBuilder.bind(queue()).to(appExchange()).with("#{'${queue}'}");
     }
 
     @Bean
