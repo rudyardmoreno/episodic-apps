@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 public class AmqpPublisher {
     @Bean
     public TopicExchange appExchange() {
-        return new TopicExchange("episodic-queue");
+        return new TopicExchange("episodic-events");
     }
 
     @Bean

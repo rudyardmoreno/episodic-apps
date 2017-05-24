@@ -1,8 +1,8 @@
 applications:
-- name: episodic-events
+- name: episodic-events-v2
   instances: 1
   memory: 1024M
-  disk_quota: 1024M
+  disk_quota: 548M
   routes:
   - route: touching-fideicommissum.cfapps.io
   services:

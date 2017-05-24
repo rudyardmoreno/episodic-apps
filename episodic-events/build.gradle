@@ -14,6 +14,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -24,8 +25,8 @@ repositories {
 }
 
 ext {
-	springCloudServicesVersion = '1.4.1.RELEASE'
-	springCloudVersion = 'Dalston.RELEASE'
+    springCloudServicesVersion = '1.4.1.RELEASE'
+    springCloudVersion = 'Dalston.RELEASE'
 }
 
 dependencies {
@@ -39,14 +40,13 @@ dependencies {
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda'
     compile 'com.google.code.gson:gson:2.8.0'
 	compile("org.springframework.boot:spring-boot-starter-amqp")
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.amqp:spring-rabbit-junit:1.7.2.RELEASE")
     compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
-
 }
 
 dependencyManagement {
-	imports {
-		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
+    imports {
+        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
