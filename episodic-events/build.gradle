@@ -23,6 +23,10 @@ repositories {
     maven { url "http://repo.spring.io/snapshot" }
 }
 
+ext {
+	springCloudServicesVersion = '1.4.1.RELEASE'
+	springCloudVersion = 'Dalston.RELEASE'
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
@@ -35,4 +39,13 @@ dependencies {
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda'
     compile 'com.google.code.gson:gson:2.8.0'
 	compile("org.springframework.boot:spring-boot-starter-amqp")
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
