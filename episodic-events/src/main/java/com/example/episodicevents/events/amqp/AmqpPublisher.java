@@ -20,17 +20,17 @@ import org.springframework.context.annotation.Configuration;
 public class AmqpPublisher {
     @Bean
     public TopicExchange appExchange() {
-        return new TopicExchange("episodic-events");
+        return new TopicExchange("episodic-queue");
     }
 
     @Bean
     public Queue queue() {
-        return new Queue("#{'${queue}'}");
+        return new Queue("episodic-progress");
     }
 
     @Bean
     public Binding declareBinding() {
-        return BindingBuilder.bind(queue()).to(appExchange()).with("#{'${queue}'}");
+        return BindingBuilder.bind(queue()).to(appExchange()).with("episodic-progress");
     }
 
     @Bean

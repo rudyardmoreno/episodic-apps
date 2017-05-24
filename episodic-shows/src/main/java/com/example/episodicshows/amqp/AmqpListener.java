@@ -38,7 +38,7 @@ public class AmqpListener implements RabbitListenerConfigurer {
     @Autowired
     UserRepository userRepository;
 
-    @RabbitListener(queues = "#{'${queue}'}")
+    @RabbitListener(queues = "episodic-progress")
     @Transactional
     public void receiveMessage(final Progress progress) {
         System.out.println("************************************************");
