@@ -45,6 +45,8 @@ dependencies {
     compile('io.pivotal.spring.cloud:spring-cloud-services-starter-config-client')
     compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
     compile('org.springframework.cloud:spring-cloud-starter-zuul')
+    compile('io.springfox:springfox-swagger2:2.6.1')
+    compile('io.springfox:springfox-swagger-ui:2.6.1')
 }
 
 dependencyManagement {
