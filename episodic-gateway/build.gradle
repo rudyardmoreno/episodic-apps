@@ -9,16 +9,7 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
-
 }
-
-plugins {
-	id "org.flywaydb.flyway" version "4.2.0"
-}
-
-project.ext['flyway.url']='jdbc:mysql://localhost:3306/episodic_shows?serverTimezone=UTC'
-project.ext['flyway.user']='root'
-project.ext['flyway.password']=''
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -32,30 +23,21 @@ repositories {
 	maven { url "http://repo.spring.io/snapshot" }
 }
 
+
 ext {
 	springCloudServicesVersion = '1.4.1.RELEASE'
-	springCloudVersion = 'Dalston.RELEASE'
+	springCloudVersion = 'Dalston.SR1'
 }
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.cloud:spring-cloud-starter-zuul')
+	compile('io.pivotal.spring.cloud:spring-cloud-services-starter-config-client')
+	compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.springframework.boot:spring-boot-devtools')
-	runtime('mysql:mysql-connector-java')
-	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile "org.flywaydb:flyway-core:4.2.0"
-	compile 'com.google.code.gson:gson:2.8.0'
-	compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda'
-	compile("org.springframework.boot:spring-boot-starter-amqp")
-	compile("org.springframework.amqp:spring-rabbit-junit:1.7.2.RELEASE")
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-    compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
-    compile('io.pivotal.spring.cloud:spring-cloud-services-starter-config-client')
-    compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry')
-    compile('org.springframework.cloud:spring-cloud-starter-zuul')
 }
 
 dependencyManagement {
